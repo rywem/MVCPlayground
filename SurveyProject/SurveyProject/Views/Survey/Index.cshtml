@@ -1,0 +1,51 @@
+﻿@model SurveyProject.Models.Survey
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+@{ 
+
+    Dictionary<string, object> htmlAttributesName = new Dictionary<string, object>();
+}
+<div>
+    <h4>Survey</h4>
+    <hr />
+    <div class="display">
+        <table>
+            <tr>
+                <td>@Html.DisplayFor(e => e.Name)</td>
+            </tr>
+        </table>
+    </div>
+    <form id="inputs" method="post">
+        <table>
+            <tr class="visible">
+                <td>@Html.LabelFor(e => e.Name, new { @class = "text1" })</td>
+                <td>@Html.TextBoxFor(e => e.Name, new { @class = "textbox1" })</td>
+            </tr>
+            <tr class="hidden">
+                <td>@Html.LabelFor(e => e.Gender, new { @class = "text1" })</td>
+                <td>@Html.TextBoxFor(e => e.Gender, new { @class = "textbox1" })</td>
+            </tr>
+        </table>
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </form>
+</div>
+<script>
+    var input = document.getElementById("inputs");
+
+    input.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("submit").click();
+        }
+    });
+</script>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

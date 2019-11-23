@@ -7,8 +7,7 @@ namespace Uplift.DataAccess.Data.Repository
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _db;
-        public ICategoryRepository Category { get; private set; }
-        ICategoryRepository IUnitOfWork.Category { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public ICategoryRepository Category { get; private set; }        
 
         public UnitOfWork(ApplicationDbContext db)
         {

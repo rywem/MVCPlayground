@@ -43,7 +43,7 @@
 6, [jQuery Serializer JSON](https://cdnjs.com/libraries/jquery.serializeJSON) - jQuery Serializer
     - `<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.min.js" integrity="sha256-A6ALIKGCsaO4m9Bg8qeVYZpvU575sGTBvtpzEFdL0z8=" crossorigin="anonymous"></script>`
     
-    ```
+```
 CSS:
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
@@ -61,4 +61,4 @@ JAVASCRIPT:
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script src="https://kit.fontawesome.com/99a0a84d2f.js" crossorigin="anonymous"></script>        
-    ```
+ ```

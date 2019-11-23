@@ -23,7 +23,6 @@
 7. Microsoft.EntityFrameworkcore.SqlServer 3.0.0
     1. Uplift.DataAccess
     
-
 ### Resources
 1. [Bootswatch](https://bootswatch.com/) - Bootstrap Wrapper Templates
 2. [DataTables](https://datatables.net/) - Data table templates (includes CDN link)
@@ -40,7 +39,7 @@
 4. [Sweet Alert](https://sweetalert.js.org/guides/) - Displays alerts
     - [cdnjs Sweet Alert 1.1.3](https://cdnjs.com/libraries/sweetalert/1.1.3)
 5. [Font Awesome](https://fontawesome.com/) - Beautiful, free icons
-6, [jQuery Serializer JSON](https://cdnjs.com/libraries/jquery.serializeJSON) - jQuery Serializer
+6. [jQuery Serializer JSON](https://cdnjs.com/libraries/jquery.serializeJSON) - jQuery Serializer
     - `<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.min.js" integrity="sha256-A6ALIKGCsaO4m9Bg8qeVYZpvU575sGTBvtpzEFdL0z8=" crossorigin="anonymous"></script>`
     
 ```

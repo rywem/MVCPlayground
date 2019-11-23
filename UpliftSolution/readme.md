@@ -22,7 +22,15 @@
     3. Uplift.Models
 7. Microsoft.EntityFrameworkcore.SqlServer 3.0.0
     1. Uplift.DataAccess
-    
+
+### Repository Pattern
+1. Add scripts: 
+    - Nuget Console
+        - `add-migration AddCategoryToDatabase`
+2. Push scripts to database
+    - Nuget Console:
+        - `update-database`
+
 ### Resources
 1. [Bootswatch](https://bootswatch.com/) - Bootstrap Wrapper Templates
 2. [DataTables](https://datatables.net/) - Data table templates (includes CDN link)

@@ -1,4 +1,9 @@
 ﻿@model Uplift.Models.Service
+@using Uplift.Utility
+@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor  HttpContextAccessor
+@using Uplift.Extensions
 @{
 
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -38,7 +43,23 @@
                     <a asp-action="Index" class="btn btn-success btn-square form-control btn-lg" style="height: 50px;">Back to List</a>
                 </div>
                 <div class="col-12 col-md-6 pb-1">
-                    <a asp-action="AddToCart" class="btn btn-primary btn-square form-control btn-lg" asp-route-serviceId="@Model.Id" style="height: 50px;">Add to Cart</a>
+                    @{
+                        var AddToCartEnabled = true;
+
+                        List<int> cartItems = HttpContextAccessor.HttpContext.Session.GetObject<List<int>>(StaticDetails.SessionCart);
+
+                        if (cartItems != null)
+                            AddToCartEnabled = !cartItems.Contains(Model.Id);
+                    }
+
+                    @if (AddToCartEnabled)
+                    {
+                        <a asp-action="AddToCart" class="btn btn-primary btn-square form-control btn-lg" asp-route-serviceId="@Model.Id" style="height: 50px;">Add to Cart</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-primary btn-square form-control btn-lg" style="height: 50px; cursor: not-allowed; opacity: 0.5;text-decoration: none;">Item in Cart</a>
+                    }
                 </div>
             </div>
         </div>

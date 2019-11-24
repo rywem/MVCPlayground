@@ -2,6 +2,10 @@
 
 ## Project Details
 1. Authentication: Choose #2, In app authentication.
+2. Move:
+    1. the Data\Migrations folder and Data\ApplicationDbContext file from the Site project to the DataAccess project. 
+    2. Delete the contents of the Migrations folder
+    3. Change the ApplicationDbContext namespace to the appropriate namespace for the new project
 
 ## Nuget Packages
 1. Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation 3.0.0
@@ -22,6 +26,8 @@
     3. Uplift.Models
 7. Microsoft.EntityFrameworkcore.SqlServer 3.0.0
     1. Uplift.DataAccess
+
+
 
 ### Repository Pattern
 1. Add scripts: 

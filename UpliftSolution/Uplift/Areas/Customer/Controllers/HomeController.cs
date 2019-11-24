@@ -14,8 +14,6 @@ namespace Uplift.Controllers
     [Area("Customer")]
     public class HomeController : Controller
     {
-        //private readonly ILogger<HomeController> _logger;
-
         private readonly IUnitOfWork _unitOfWork;
         
         private HomeViewModel _homeViewModel;
@@ -24,10 +22,6 @@ namespace Uplift.Controllers
         {
             this._unitOfWork = unitOfWork;
         }
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
 
         public IActionResult Index()
         {
@@ -37,6 +31,18 @@ namespace Uplift.Controllers
                 ServiceList = _unitOfWork.Service.GetAll(includeProperties: "Frequency")
             };
             return View(_homeViewModel);
+        }
+
+        public IActionResult Details(int serviceId)
+        {
+            var serviceFromDb = _unitOfWork.Service.GetFirstOrDefault(includeProperties: "Category,Frequency", filter: c => c.Id == serviceId);
+
+            if (serviceFromDb != null)
+                return View(serviceFromDb);
+            
+
+            return RedirectToAction(nameof(Index));
+
         }
 
         public IActionResult Privacy()

@@ -9,11 +9,13 @@ namespace Uplift.DataAccess.Data.Repository
         private readonly ApplicationDbContext _db;
         public ICategoryRepository Category { get; private set; }        
         public IFrequencyRepository Frequency { get; private set; }
+        public IServiceRepository Service { get; private set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             this._db = db;
             this.Category = new CategoryRepository(this._db);
             this.Frequency = new FrequencyRepository(this._db);
+            this.Service = new ServiceRepository(this._db);
         }
 
         public void Save()

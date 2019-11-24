@@ -27,6 +27,7 @@
 1. Add scripts: 
     - Nuget Console
         - `add-migration AddCategoryToDatabase`
+        - `add-migration AddFrequencyToDatabase`
 2. Push scripts to database
     - Nuget Console:
         - `update-database`

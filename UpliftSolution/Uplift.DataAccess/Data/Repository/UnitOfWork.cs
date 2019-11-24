@@ -8,7 +8,7 @@ namespace Uplift.DataAccess.Data.Repository
     {
         private readonly ApplicationDbContext _db;
         public ICategoryRepository Category { get; private set; }        
-
+        public IFrequencyRepository Frequency { get; private set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             this._db = db;

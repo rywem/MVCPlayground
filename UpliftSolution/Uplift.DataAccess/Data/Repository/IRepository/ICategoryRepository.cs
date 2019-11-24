@@ -4,9 +4,9 @@ using System.Text;
 using Uplift.Models;
 namespace Uplift.DataAccess.Data.Repository.IRepository
 {
-    public interface ICategoryRepository : IRepository<Uplift.Models.Category>
+    public interface ICategoryRepository : IRepository<Category>
     {
-        IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> GetCategoryListforDropDown();
+        IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> GetCategoryListForDropDown();
 
         void Update(Category category);
     }

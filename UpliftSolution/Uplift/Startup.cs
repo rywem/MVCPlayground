@@ -34,7 +34,12 @@ namespace Uplift
                 .AddDefaultTokenProviders()
                 .AddDefaultUI();
             services.AddScoped<DataAccess.Data.Repository.IRepository.IUnitOfWork, DataAccess.Data.Repository.UnitOfWork>();
-
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             services.ConfigureApplicationCookie(options => 
             {
                 options.LoginPath = $"/Identity/Account/Login";
@@ -66,7 +71,7 @@ namespace Uplift
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthentication();

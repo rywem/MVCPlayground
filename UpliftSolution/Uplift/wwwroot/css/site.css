@@ -108,3 +108,12 @@ body {
     min-height: 38px;
     border-radius: 2px;
 }
+
+.textCard {
+    height: inherit;
+    background: inherit;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font: 600 bold;
+    filter: contrast(9) drop-shadow(.06em .06em black);
+}

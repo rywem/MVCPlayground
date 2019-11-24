@@ -118,7 +118,7 @@ namespace Uplift.Areas.Admin.Controllers
         }
         private string CreateImageFile(string webRootPath, Microsoft.AspNetCore.Http.IFormFileCollection files)
         {
-            string fileName = Guid.NewGuid().ToString();
+            string fileName = Guid.NewGuid().ToString()+"_img_";
             var uploads = Path.Combine(webRootPath, @"images\services");
             var extension = Path.GetExtension(files[0].FileName);
 

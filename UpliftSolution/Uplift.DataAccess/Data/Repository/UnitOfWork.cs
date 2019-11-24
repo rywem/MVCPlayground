@@ -12,7 +12,8 @@ namespace Uplift.DataAccess.Data.Repository
         public UnitOfWork(ApplicationDbContext db)
         {
             this._db = db;
-            Category = new CategoryRepository(this._db);
+            this.Category = new CategoryRepository(this._db);
+            this.Frequency = new FrequencyRepository(this._db);
         }
 
         public void Save()

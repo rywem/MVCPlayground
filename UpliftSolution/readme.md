@@ -35,6 +35,7 @@
         - `add-migration AddCategoryToDatabase`
         - `add-migration AddFrequencyToDatabase`
         - `add-migration AddServiceToDatabase`
+        - `add-migration AddOrderHeaderAndDetailsToDatabase`
 2. Push scripts to database
     - Nuget Console:
         - `update-database`

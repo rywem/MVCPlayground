@@ -40,14 +40,24 @@ namespace Uplift.Areas.Customer.Controllers
             return View(cartViewModel);
         }
 
+        public IActionResult Summary()
+        {
+            var sessionList = HttpContext.Session.GetObject<List<int>>(Utility.StaticDetails.SessionCart);
+            if (sessionList != null)
+            {
+                foreach (var serviceId in sessionList)
+                {
+                    cartViewModel.ServiceList.Add(_unitOfWork.Service.GetFirstOrDefault(u => u.Id == serviceId, includeProperties: "Frequency,Category"));
+                }
+            }
+            return View(cartViewModel);
+        }
+
         public IActionResult Remove(int serviceId)
         {
             var sessionList = HttpContext.Session.GetObject<List<int>>(Utility.StaticDetails.SessionCart);
-
             sessionList.Remove(serviceId);
-
             HttpContext.Session.SetObject(StaticDetails.SessionCart, sessionList);
-
             return RedirectToAction(nameof(Index));
         }
     }

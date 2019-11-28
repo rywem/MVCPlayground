@@ -7,6 +7,7 @@ using Uplift.DataAccess.Data.Repository.IRepository;
 using Uplift.Extensions;
 using Uplift.Models;
 using Uplift.Models.ViewModels;
+using Uplift.Utility;
 
 namespace Uplift.Areas.Customer.Controllers
 {
@@ -37,6 +38,17 @@ namespace Uplift.Areas.Customer.Controllers
                 }
             }
             return View(cartViewModel);
+        }
+
+        public IActionResult Remove(int serviceId)
+        {
+            var sessionList = HttpContext.Session.GetObject<List<int>>(Utility.StaticDetails.SessionCart);
+
+            sessionList.Remove(serviceId);
+
+            HttpContext.Session.SetObject(StaticDetails.SessionCart, sessionList);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

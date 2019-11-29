@@ -53,6 +53,48 @@ namespace Uplift.Areas.Customer.Controllers
             return View(cartViewModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Summary")]
+        public IActionResult SummaryPOST()
+        {
+            var sessionList = HttpContext.Session.GetObject<List<int>>(Utility.StaticDetails.SessionCart);
+            if (sessionList != null)
+            {
+                foreach (var serviceId in sessionList)
+                {
+                    cartViewModel.ServiceList.Add(_unitOfWork.Service.GetFirstOrDefault(u => u.Id == serviceId, includeProperties: "Frequency,Category"));
+                }
+            }
+
+            if( !ModelState.IsValid )
+                return View(cartViewModel);
+            else
+            {
+                //Todo add transaction
+                cartViewModel.OrderHeader.OrderDate = DateTime.Now;
+                cartViewModel.OrderHeader.Status = StaticDetails.StatusSubmitted;
+                cartViewModel.OrderHeader.ServiceCount = cartViewModel.ServiceList.Count;
+                _unitOfWork.OrderHeader.Add(cartViewModel.OrderHeader);
+                _unitOfWork.Save();
+
+                foreach (var item in cartViewModel.ServiceList)
+                {
+                    OrderDetails orderDetails = new OrderDetails()
+                    {
+                        ServiceId = item.Id,
+                        OrderHeaderId = cartViewModel.OrderHeader.Id,
+                        ServiceName = item.Name, 
+                        Price = item.Price
+                    };
+                    _unitOfWork.OrderDetails.Add(orderDetails);
+                    _unitOfWork.Save();
+                }
+                HttpContext.Session.SetObject(StaticDetails.SessionCart, new List<int>());
+                return RedirectToAction("OrderConfirmation", "Cart", new { id = cartViewModel.OrderHeader.Id });
+            }
+        }
+
         public IActionResult Remove(int serviceId)
         {
             var sessionList = HttpContext.Session.GetObject<List<int>>(Utility.StaticDetails.SessionCart);

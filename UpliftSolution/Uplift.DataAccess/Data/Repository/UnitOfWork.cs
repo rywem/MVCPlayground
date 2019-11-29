@@ -21,7 +21,26 @@ namespace Uplift.DataAccess.Data.Repository
             this.Service = new ServiceRepository(this._db);
             this.OrderHeader = new OrderHeaderRepository(this._db);
             this.OrderDetails = new OrderDetailsRepository(this._db);
+        }
 
+        public bool SaveTransaction()
+        {
+            bool returnValue = true;
+            using (var dbContextTransaction = _db.Database.BeginTransaction())
+            {
+                try
+                {
+                    _db.SaveChanges();
+                    dbContextTransaction.Commit();
+                }
+                catch (Exception)
+                {
+                    //Log Exception Handling message                      
+                    returnValue = false;
+                    dbContextTransaction.Rollback();
+                }
+            }
+            return returnValue;
         }
 
         public void Save()

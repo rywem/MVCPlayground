@@ -5,6 +5,13 @@
     <UserSecretsId>aspnet-Uplift-58919149-F0C1-48D9-8889-A883DBE27718</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Areas\Anonymous\**" />
+    <Content Remove="Areas\Anonymous\**" />
+    <EmbeddedResource Remove="Areas\Anonymous\**" />
+    <None Remove="Areas\Anonymous\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />

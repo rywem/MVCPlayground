@@ -12,6 +12,7 @@ namespace Uplift.DataAccess.Data.Repository
         public IServiceRepository Service { get; private set; }
         public IOrderHeaderRepository OrderHeader { get; private set; }
         public IOrderDetailsRepository OrderDetails { get; private set; }
+        public IUserRepository User { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
@@ -21,6 +22,7 @@ namespace Uplift.DataAccess.Data.Repository
             this.Service = new ServiceRepository(this._db);
             this.OrderHeader = new OrderHeaderRepository(this._db);
             this.OrderDetails = new OrderDetailsRepository(this._db);
+            this.User = new UserRepository(this._db);
         }
 
         public bool SaveTransaction()

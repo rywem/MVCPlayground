@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="row">
+    <div class="col-sm-1">
+        <span id="spinner"><i class="fas fa-spinner" id="icon"></i></span>
+    </div>
+    <div class="sol-sm-11">
+        Loading, please wait.
+    </div>
+</div>
+
+@section Scripts{
+    
+    <script src="~/lib/external/jQueryRotate.js"></script>
+    <script>
+        //http://jqueryrotate.com/
+
+        var angle = 0;
+
+        setInterval(function () {
+            angle += 8;
+            $("#icon").rotate(angle);
+        }, 50);
+
+        $(document).ready(function () {
+            
+        });
+        rotation();
+
+    </script>
+}

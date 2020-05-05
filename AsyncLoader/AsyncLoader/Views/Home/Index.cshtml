@@ -30,7 +30,11 @@
         }, 50);
 
         $(document).ready(function () {
-            
+            $.ajax({
+                url: "/Home/GetData",
+                async: true,
+                
+            })
         });
         rotation();
 

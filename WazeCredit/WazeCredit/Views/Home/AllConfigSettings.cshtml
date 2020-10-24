@@ -1,0 +1,11 @@
+﻿@model List<string>
+
+<div class="p-4">
+    <h3>Config settings</h3>
+    <ul>
+        @foreach ( var item in Model )
+        {
+            <li>@item</li>
+        }
+    </ul>
+</div>
